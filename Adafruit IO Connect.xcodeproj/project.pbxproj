@@ -57,8 +57,8 @@
 				D5B47F8C1EFC426B005E4028 /* AppDelegate.swift */,
 				D5B47F8E1EFC426B005E4028 /* ViewController.swift */,
 				D5B47F901EFC426B005E4028 /* Main.storyboard */,
-				D5B47F931EFC426B005E4028 /* Assets.xcassets */,
 				D5B47F951EFC426B005E4028 /* LaunchScreen.storyboard */,
+				D5B47F931EFC426B005E4028 /* Assets.xcassets */,
 				D5B47F981EFC426B005E4028 /* Info.plist */,
 			);
 			path = "Adafruit IO Connect";
@@ -304,6 +304,7 @@
 				D5B47F9D1EFC426B005E4028 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
