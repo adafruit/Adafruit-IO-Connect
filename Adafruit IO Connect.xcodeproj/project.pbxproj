@@ -12,6 +12,9 @@
 		D5B47F921EFC426B005E4028 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B47F901EFC426B005E4028 /* Main.storyboard */; };
 		D5B47F941EFC426B005E4028 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D5B47F931EFC426B005E4028 /* Assets.xcassets */; };
 		D5B47F971EFC426B005E4028 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D5B47F951EFC426B005E4028 /* LaunchScreen.storyboard */; };
+		D5B47F9F1EFD5EDA005E4028 /* AcceleroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B47F9E1EFD5EDA005E4028 /* AcceleroViewController.swift */; };
+		D5B47FA21EFD5FDD005E4028 /* GyroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B47FA11EFD5FDD005E4028 /* GyroViewController.swift */; };
+		D5B47FA41EFD5FEE005E4028 /* BaroViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B47FA31EFD5FEE005E4028 /* BaroViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		D5B47F931EFC426B005E4028 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D5B47F961EFC426B005E4028 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D5B47F981EFC426B005E4028 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D5B47F9E1EFD5EDA005E4028 /* AcceleroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AcceleroViewController.swift; sourceTree = "<group>"; };
+		D5B47FA11EFD5FDD005E4028 /* GyroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GyroViewController.swift; sourceTree = "<group>"; };
+		D5B47FA31EFD5FEE005E4028 /* BaroViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaroViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +62,23 @@
 			children = (
 				D5B47F8C1EFC426B005E4028 /* AppDelegate.swift */,
 				D5B47F8E1EFC426B005E4028 /* ViewController.swift */,
+				D5B47FA01EFD5EE5005E4028 /* Sensor Controllers */,
 				D5B47F901EFC426B005E4028 /* Main.storyboard */,
 				D5B47F951EFC426B005E4028 /* LaunchScreen.storyboard */,
 				D5B47F931EFC426B005E4028 /* Assets.xcassets */,
 				D5B47F981EFC426B005E4028 /* Info.plist */,
 			);
 			path = "Adafruit IO Connect";
+			sourceTree = "<group>";
+		};
+		D5B47FA01EFD5EE5005E4028 /* Sensor Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D5B47F9E1EFD5EDA005E4028 /* AcceleroViewController.swift */,
+				D5B47FA31EFD5FEE005E4028 /* BaroViewController.swift */,
+				D5B47FA11EFD5FDD005E4028 /* GyroViewController.swift */,
+			);
+			name = "Sensor Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +156,9 @@
 			files = (
 				D5B47F8F1EFC426B005E4028 /* ViewController.swift in Sources */,
 				D5B47F8D1EFC426B005E4028 /* AppDelegate.swift in Sources */,
+				D5B47F9F1EFD5EDA005E4028 /* AcceleroViewController.swift in Sources */,
+				D5B47FA21EFD5FDD005E4028 /* GyroViewController.swift in Sources */,
+				D5B47FA41EFD5FEE005E4028 /* BaroViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

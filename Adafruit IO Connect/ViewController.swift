@@ -14,7 +14,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        identities = ["Accelerometer","Gyroscope", "Barometer"]
+        identities = ["Accelerometer","Barometer", "Gyroscope"]
     }
 
 //In each view controller, we need to had different sensors to post
@@ -56,5 +56,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.navigationController?.pushViewController(viewController!, animated: true)
     }
 
+       
+
+    
+    
 }
 
