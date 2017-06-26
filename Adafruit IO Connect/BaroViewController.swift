@@ -29,18 +29,19 @@ class BaroViewController: UIViewController {
     }
     @IBOutlet weak var altiTag: UILabel!
     
-    //UI Sensor Labels
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         startAltimeter()
-        // Do any additional setup after loading the view.
+        
     }
 
-    
+    override func viewWillDisappear(_ animated: Bool) {
+        stopAltimeter()
+    }
     
     func startAltimeter() {
+       print("Start Altimeter Updates")
         if (CMAltimeter.isRelativeAltitudeAvailable()) {
             self.altimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: {
                 
@@ -66,7 +67,6 @@ class BaroViewController: UIViewController {
         }
     }
 
-   
     
     func stopAltimeter() {
         
@@ -76,13 +76,8 @@ class BaroViewController: UIViewController {
         
         self.altimeter.stopRelativeAltitudeUpdates() // Stop updates
         
-        print("Stopped relative altitude updates.")
+        print("Stopped Altitude Updates...")
         
     }
 
-    
-    
-
-   //This view controller holds pressure data and altitude data.
-    
 }

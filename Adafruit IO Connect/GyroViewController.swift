@@ -17,33 +17,30 @@ class GyroViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
-        
-    }
-   
     @IBOutlet weak var gyroTagZ: UILabel!
     @IBOutlet weak var gyroTagY: UILabel!
     @IBOutlet weak var gyroTagX: UILabel!
+    
+    @IBAction func stateChange(_ sender: Any) {
+        if ((sender as AnyObject).isOn == true){
+            self.startGyro()
+        }else {
+            self.stopGyro()
+        }
 
+    }
 
     //Data
     var motionManager = CMMotionManager()
-
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        stopGyro()
     }
-    */
     
     
     func startGyro() {
+       print("Start Gyroscope Updates")
         motionManager.gyroUpdateInterval = 2.2
         motionManager.startGyroUpdates(to: OperationQueue.main, withHandler: {
             (gyroData:CMGyroData?, error: Error?) in
@@ -71,7 +68,16 @@ class GyroViewController: UIViewController {
         
     }
 
+    
+    
+    
     func stopGyro() {
+        self.motionManager.stopGyroUpdates()
+        self.gyroTagX.text = "--"
+        self.gyroTagY.text = "--"
+        self.gyroTagZ.text = "--"
+        print("Gyroscope Stopped Updating...")
+        
         
     }
     

@@ -23,7 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     //This View Controller is for you to choose a sensor
     //The first VC Accelerometer- contains A-IO Key, values that will be displayed in the current view.
     
- var sensors = ["Acclerometer Sensor","Barometer Sensor","Gyroscope Sensor"]
+ var sensors = ["Accelerometer Sensor","Barometer Sensor","Gyroscope Sensor"]
     
     var identities = [String]()
    
