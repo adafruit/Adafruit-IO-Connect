@@ -36,7 +36,7 @@ class GyroViewController: UIViewController {
     
     //Data
     var motionManager = CMMotionManager()
-    
+    var unclaimedDouble = Double()
     
     override func viewWillDisappear(_ animated: Bool) {
         stopGyro()
