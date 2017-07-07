@@ -12,7 +12,6 @@ import CoreMotion
 
 class BaroViewController: UIViewController {
 
-    
     var motionManager = CMMotionManager()
     lazy var altimeter = CMAltimeter()
     var pressureData: Float?
@@ -77,7 +76,7 @@ class BaroViewController: UIViewController {
                     print("Meters of relative Altitude: \(altitude ?? 0)")
                     self.postAltitudeData()
                 
-            /*Altitude events reflect the change in the current altitude, not the absolute altitude. So a hiking app might use this object to track the user’s elevation gain over the course of a hike. Because altitude events may not be available on all devices, always call the isRelativeAltitudeAvailable() method before using this service. */
+        /*Altitude events reflect the change in the current altitude, not the absolute altitude. So a hiking app might use this object to track the user’s elevation gain over the course of a hike. Because altitude events may not be available on all devices, always call the isRelativeAltitudeAvailable() method before using this service. */
                 
                 }
             })
@@ -114,6 +113,9 @@ class BaroViewController: UIViewController {
         }
     }
     
+    
+    
+    
     //Stop Functions
     func stopPressureMeter() {
         self.pressureTag.text = "--"
@@ -148,16 +150,13 @@ class BaroViewController: UIViewController {
         guard let url = URL(string: "https://io.adafruit.com/api/feeds/text-feed/data.json?X-AIO-Key=c04d002a910e4eff85e6b83203d4e287") else { return }
         
         var request = URLRequest(url: url)
-        
         request.httpMethod = "POST"
-        
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         
         
         guard let httpBody = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { return }
         
         request.httpBody = httpBody
-        
         let session = URLSession.shared
         session.dataTask(with: request) { (data, response, error) in
             if let response = response {
