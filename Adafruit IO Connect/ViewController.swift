@@ -11,9 +11,6 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         identities = ["Accelerometer","Barometer", "Gyroscope"]
