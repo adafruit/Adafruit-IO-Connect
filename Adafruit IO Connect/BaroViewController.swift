@@ -66,8 +66,7 @@ class BaroViewController: UIViewController {
                 
                 (altimeterData: CMAltitudeData?, error: Error?) in
                 if (error != nil) {
-                    let alertView = UIAlertView(title: "Error", message: error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
-                    alertView.show()
+                   print("Error")
                 } else {
                    let altitude = altimeterData?.relativeAltitude.floatValue
                     self.altimeterData = altimeterData?.relativeAltitude.floatValue
@@ -94,9 +93,7 @@ class BaroViewController: UIViewController {
                 
                 (altimeterData: CMAltitudeData?, error: Error?) in
                 if (error != nil) {
-                    let alertView = UIAlertView(title: "Error", message: error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
-                    alertView.show()
-                    
+                     print("Error")                    
                 } else {
                     
                     let pressure = altimeterData?.pressure.floatValue

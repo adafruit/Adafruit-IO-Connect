@@ -13,7 +13,7 @@ class AcceleroViewController: UIViewController {
 
     @IBOutlet weak var aSwitchZ: UISwitch!
     @IBOutlet weak var aSwitchY: UISwitch!
-        @IBOutlet weak var aSwitchX: UISwitch!
+    @IBOutlet weak var aSwitchX: UISwitch!
     @IBOutlet weak var accelTagZ: UILabel!
     @IBOutlet weak var accelTagX: UILabel!
     @IBOutlet weak var accelTagY: UILabel!
@@ -84,9 +84,7 @@ class AcceleroViewController: UIViewController {
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {
             (accelerData:CMAccelerometerData?, error: Error?) in
             if (error != nil ) {
-                let alertView = UIAlertView(title: "Error", message: error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
-                alertView.show()
-                
+               print("Error")
             } else {
                
                 let accelX = accelerData?.acceleration.x
@@ -104,9 +102,7 @@ class AcceleroViewController: UIViewController {
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {
             (accelerData:CMAccelerometerData?, error: Error?) in
             if (error != nil ) {
-                let alertView = UIAlertView(title: "Error", message: error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
-                alertView.show()
-                
+                print("Error")                
             } else {
                 
                 let accelY = accelerData?.acceleration.y
@@ -124,9 +120,7 @@ class AcceleroViewController: UIViewController {
         motionManager.startAccelerometerUpdates(to: OperationQueue.current!, withHandler: {
             (accelerData:CMAccelerometerData?, error: Error?) in
             if (error != nil ) {
-                let alertView = UIAlertView(title: "Error", message: error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
-                alertView.show()
-                
+                  print("Error")                
             } else {
                 
                 let accelZ = accelerData?.acceleration.z

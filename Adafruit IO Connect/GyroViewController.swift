@@ -86,9 +86,7 @@ class GyroViewController: UIViewController {
         motionManager.startGyroUpdates(to: OperationQueue.main, withHandler: {
             (gyroData:CMGyroData?, error: Error?) in
             if (error != nil ) {
-                let alertView = UIAlertView(title: "Error", message: error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
-                alertView.show()
-                
+                 print("Error")                
             } else {
                 
                 let gyroscopeX = gyroData?.rotationRate.x
@@ -106,9 +104,7 @@ class GyroViewController: UIViewController {
         motionManager.startGyroUpdates(to: OperationQueue.main, withHandler: {
             (gyroData:CMGyroData?, error: Error?) in
             if (error != nil ) {
-                let alertView = UIAlertView(title: "Error", message: error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
-                alertView.show()
-                
+                  print("Error")                
             } else {
                 
                 let gyroscopeY = gyroData?.rotationRate.y
@@ -126,9 +122,7 @@ class GyroViewController: UIViewController {
         motionManager.startGyroUpdates(to: OperationQueue.main, withHandler: {
             (gyroData:CMGyroData?, error: Error?) in
             if (error != nil ) {
-                let alertView = UIAlertView(title: "Error", message: error!.localizedDescription, delegate: nil, cancelButtonTitle: "OK")
-                alertView.show()
-                
+                 print("Error")
             } else {
                 
                 let gyroscopeZ = gyroData?.rotationRate.z
