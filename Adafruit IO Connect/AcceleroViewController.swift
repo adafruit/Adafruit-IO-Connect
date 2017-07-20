@@ -11,6 +11,8 @@ import CoreMotion
 
 class AcceleroViewController: UIViewController {
 
+    
+    
     @IBOutlet weak var aSwitchZ: UISwitch!
     @IBOutlet weak var aSwitchY: UISwitch!
     @IBOutlet weak var aSwitchX: UISwitch!
@@ -26,6 +28,7 @@ class AcceleroViewController: UIViewController {
         self.accelTagX.text = "--"
         self.accelTagY.text = "--"
         self.accelTagZ.text = "--"
+        print("Adafruit-IOKey: \(ioKey!)")
     }
    
     
@@ -181,7 +184,7 @@ class AcceleroViewController: UIViewController {
     func postAccelerometerDataY() {
         
         let parameters = ["value": "\(String(format: "%.02f", (motionManager.accelerometerData?.acceleration.y)!))"]
-        guard let url = URL(string: "https://io.adafruit.com/api/feeds/text-feed/data.json?X-AIO-Key=c04d002a910e4eff85e6b83203d4e287") else { return }
+        guard let url = URL(string: "https://io.adafruit.com/api/feeds/text-feed/data.json?X-AIO-Key=\(ioKey!)") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

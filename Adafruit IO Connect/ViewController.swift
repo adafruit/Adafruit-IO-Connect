@@ -8,8 +8,22 @@
 
 import UIKit
 
+
+var ioKey: String?
+
+
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    @IBAction func ioKeyPressed(_ sender: Any) {
+        storedIOKey()
+    }
+    @IBOutlet weak var ioKeyTextField: UITextField!
+    @IBOutlet weak var ioKeyEnter: UIButton!
+
+   
+  
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +31,11 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     
- var sensors = ["Accelerometer Sensor","Barometer Sensor","Gyroscope Sensor"]
+    
+
+    
+    
+    var sensors = ["Accelerometer Sensor","Barometer Sensor","Gyroscope Sensor"]
     
     var identities = [String]()
    
@@ -29,6 +47,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
 
+    func storedIOKey() {
+        let keyInput = ioKeyTextField.text
+        ioKey = keyInput
+        print(ioKey!)
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return sensors.count
     }
