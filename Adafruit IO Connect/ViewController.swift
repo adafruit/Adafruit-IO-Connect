@@ -20,10 +20,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var ioKeyTextField: UITextField!
     @IBOutlet weak var ioKeyEnter: UIButton!
 
-   
-  
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,9 +27,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     
-    
+    override func viewDidDisappear(_ animated: Bool) {
+        ioKeyTextField.text = ""
+    }
 
-    
     
     var sensors = ["Accelerometer Sensor","Barometer Sensor","Gyroscope Sensor"]
     

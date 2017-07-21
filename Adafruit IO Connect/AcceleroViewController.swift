@@ -9,22 +9,41 @@
 import UIKit
 import CoreMotion
 
-class AcceleroViewController: UIViewController {
-
+class AcceleroViewController: UIViewController, UITextFieldDelegate {
     
     
+    
+    
+    
+    
+    var textFeedString: String!
+    var motionManager = CMMotionManager()
+    @IBOutlet weak var acceleFeedButton: UIButton!
+    @IBOutlet weak var feedTextField: UITextField!
     @IBOutlet weak var aSwitchZ: UISwitch!
     @IBOutlet weak var aSwitchY: UISwitch!
     @IBOutlet weak var aSwitchX: UISwitch!
     @IBOutlet weak var accelTagZ: UILabel!
     @IBOutlet weak var accelTagX: UILabel!
     @IBOutlet weak var accelTagY: UILabel!
+   
     
-    var motionManager = CMMotionManager()
+    @IBAction func acceleButtonPressed(_ sender: Any) {
+        storedTextFeed()
+    }
+
+    
+    func storedTextFeed() {
+        let feedInput = feedTextField.text
+        textFeedString = feedInput
+        print(textFeedString!)
+    }
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Accelerometer Sensor"
         self.accelTagX.text = "--"
         self.accelTagY.text = "--"
         self.accelTagZ.text = "--"
@@ -159,7 +178,7 @@ class AcceleroViewController: UIViewController {
     func postAccelerometerDataX() {
         
         let parameters = ["value": "\(String(format: "%.02f", (motionManager.accelerometerData?.acceleration.x)!))"]
-        guard let url = URL(string: "https://io.adafruit.com/api/feeds/text-feed/data.json?X-AIO-Key=c04d002a910e4eff85e6b83203d4e287") else { return }
+        guard let url = URL(string: "https://io.adafruit.com/api/feeds/\(textFeedString!)/data.json?X-AIO-Key=\(ioKey!)") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -184,7 +203,7 @@ class AcceleroViewController: UIViewController {
     func postAccelerometerDataY() {
         
         let parameters = ["value": "\(String(format: "%.02f", (motionManager.accelerometerData?.acceleration.y)!))"]
-        guard let url = URL(string: "https://io.adafruit.com/api/feeds/text-feed/data.json?X-AIO-Key=\(ioKey!)") else { return }
+        guard let url = URL(string: "https://io.adafruit.com/api/feeds/\(textFeedString!)/data.json?X-AIO-Key=\(ioKey!)") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -210,7 +229,7 @@ class AcceleroViewController: UIViewController {
     func postAccelerometerDataZ() {
         
         let parameters = ["value": "\(String(format: "%.02f", (motionManager.accelerometerData?.acceleration.z)!))"]
-        guard let url = URL(string: "https://io.adafruit.com/api/feeds/text-feed/data.json?X-AIO-Key=c04d002a910e4eff85e6b83203d4e287") else { return }
+        guard let url = URL(string: "https://io.adafruit.com/api/feeds/\(textFeedString!)/data.json?X-AIO-Key=\(ioKey!)") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")

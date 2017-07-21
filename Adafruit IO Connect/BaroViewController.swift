@@ -10,18 +10,29 @@ import UIKit
 import CoreMotion
 
 
-class BaroViewController: UIViewController {
+class BaroViewController: UIViewController, UITextFieldDelegate {
 
-    var motionManager = CMMotionManager()
+    
     lazy var altimeter = CMAltimeter()
+    var motionManager = CMMotionManager()
     var pressureData: Float?
     var altimeterData: Float?
-    
+    var textFeedString: String?
     //Barometer Sensor UI
     @IBOutlet weak var altiSwitch: UISwitch!
     @IBOutlet weak var pressureSwitch: UISwitch!
+    @IBOutlet weak var feedString: UILabel!
+    @IBOutlet weak var baroFeedButton: UIButton!
     @IBOutlet weak var pressureTag: UILabel!
     @IBOutlet weak var altiTag: UILabel!
+    @IBOutlet weak var feedTextField: UITextField!
+    
+    func storedTextFeed () {
+        let feedInput = feedTextField.text
+        textFeedString = feedInput
+        print("Sent To Feed: \(textFeedString!)")
+        self.feedString.text = textFeedString
+    }
     
     //Switches
     //This is the altitude meter switch action
@@ -44,12 +55,16 @@ class BaroViewController: UIViewController {
         }
     }
     
+    @IBAction func feedButtonPressed(_ sender: Any) {
+    storedTextFeed()
+    }
+
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Barometer Sensor"
         self.altiTag.text = "--"
         self.pressureTag.text = "--"
-        
     }
 
    override func viewWillDisappear(_ animated: Bool) {
@@ -129,22 +144,12 @@ class BaroViewController: UIViewController {
         
     }
     
-    //Test
-    let foo = 5
-    
     //REST API POST Function
     func postPressureData() {
+    
+    let parameters = ["value": "\(String(format: "%.2f", (pressureData)!))"]
         
-        // adafruit post syntax:
-        //http://io.adafruit.com/api/feeds/your-feed-key/data.json?X-AIO-Key=ed0dcb344edf621e39678f08533a674a197c5b75
-        
-        //motionManager.gyroData?.rotationRate.x
-        let parameters = ["value": "\(String(format: "%.2f", (pressureData)!))"]
-        
-        //Create new Data //POST	/{username}/feeds/{feed_key}/data
-        //My AIO Key: c04d002a910e4eff85e6b83203d4e287
-        
-        guard let url = URL(string: "https://io.adafruit.com/api/feeds/text-feed/data.json?X-AIO-Key=c04d002a910e4eff85e6b83203d4e287") else { return }
+    guard let url = URL(string: "https://io.adafruit.com/api/feeds/\(textFeedString!)/data.json?X-AIO-Key=\(ioKey!)") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -174,16 +179,10 @@ class BaroViewController: UIViewController {
 
     //REST API POST Function
     func postAltitudeData() {
-        
-        // adafruit post syntax:
-        //http://io.adafruit.com/api/feeds/your-feed-key/data.json?X-AIO-Key=ed0dcb344edf621e39678f08533a674a197c5b75
-        
+    
         let parameters = ["value": "\(String(format: "%.2f", (altimeterData)!))"]
         
-        //Create new Data //POST	/{username}/feeds/{feed_key}/data
-        //My AIO Key: c04d002a910e4eff85e6b83203d4e287
-        
-        guard let url = URL(string: "https://io.adafruit.com/api/feeds/text-feed/data.json?X-AIO-Key=c04d002a910e4eff85e6b83203d4e287") else { return }
+        guard let url = URL(string: "https://io.adafruit.com/api/feeds/\(textFeedString!)/data.json?X-AIO-Key=\(ioKey!)") else { return }
         
         var request = URLRequest(url: url)
         

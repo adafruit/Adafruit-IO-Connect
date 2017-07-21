@@ -14,16 +14,32 @@ class GyroViewController: UIViewController {
     //Data
     var motionManager = CMMotionManager()
     
+    var textFeedString: String?
+    
+    @IBOutlet weak var feedTextField: UITextField!
+    
+    @IBOutlet weak var gyroFeedButton: UIButton!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.title = "Gyroscope Sensor"
         self.gyroTagX.text = "--"
         self.gyroTagY.text = "--"
         self.gyroTagZ.text = "--"
         
-        // Do any additional setup after loading the view.
     }
    
+    
+    func storedTextFeed () {
+        let feedInput = feedTextField.text
+        textFeedString = feedInput
+    }
+    
+    
+    
+    
     override func viewWillDisappear(_ animated: Bool) {
         stopGyroX()
         stopGyroY()
@@ -31,6 +47,9 @@ class GyroViewController: UIViewController {
         print("All Gyroscope Updates Ended")
     }
     
+    @IBAction func gyroButtonPressed(_ sender: Any) {
+    storedTextFeed()
+    }
     
     //UI
     @IBOutlet weak var gyroTagZ: UILabel!
@@ -140,7 +159,7 @@ class GyroViewController: UIViewController {
     func postGyroDataX() {
         
         let parameters = ["value": "\(String(format: "%.2f", (motionManager.gyroData?.rotationRate.x)!))"]
-        guard let url = URL(string: "https://io.adafruit.com/api/feeds/text-feed/data.json?X-AIO-Key=c04d002a910e4eff85e6b83203d4e287") else { return }
+        guard let url = URL(string: "https://io.adafruit.com/api/feeds/\(textFeedString!)/data.json?X-AIO-Key=\(ioKey!)") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -168,7 +187,7 @@ class GyroViewController: UIViewController {
     func postGyroDataY() {
         
         let parameters = ["value": "\(String(format: "%.2f", (motionManager.gyroData?.rotationRate.y)!))"]
-        guard let url = URL(string: "https://io.adafruit.com/api/feeds/text-feed/data.json?X-AIO-Key=c04d002a910e4eff85e6b83203d4e287") else { return }
+        guard let url = URL(string: "https://io.adafruit.com/api/feeds/\(textFeedString!)/data.json?X-AIO-Key=\(ioKey!)") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -197,7 +216,7 @@ class GyroViewController: UIViewController {
     func postGyroDataZ() {
         
         let parameters = ["value": "\(String(format: "%.2f", (motionManager.gyroData?.rotationRate.z)!))"]
-        guard let url = URL(string: "https://io.adafruit.com/api/feeds/text-feed/data.json?X-AIO-Key=c04d002a910e4eff85e6b83203d4e287") else { return }
+        guard let url = URL(string: "https://io.adafruit.com/api/feeds/\(textFeedString!)/data.json?X-AIO-Key=\(ioKey!)") else { return }
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
